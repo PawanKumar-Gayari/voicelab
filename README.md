@@ -316,6 +316,7 @@ This gives the user both:
 
 - **Python** — scientific computation and backend services
 - **AssemblyAI** — voice-agent / speech interaction
+- **gemini-ai** - For explanation of concept for group theory 
 - **LiveKit** — real-time voice infrastructure
 - **PubChem** — molecular structure/data workflows
 - **3Dmol.js** — interactive 3D molecular visualization
