@@ -1,0 +1,3 @@
+livekit-agents[assemblyai,google]~=1.6
+livekit-api>=1.0
+python-dotenv>=1.0

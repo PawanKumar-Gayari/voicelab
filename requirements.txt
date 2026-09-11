@@ -1,0 +1,9 @@
+assemblyai
+fastapi
+uvicorn
+websockets>=14.0
+numpy
+python-dotenv
+jinja2
+pytest
+psycopg[binary]>=3.2,<4

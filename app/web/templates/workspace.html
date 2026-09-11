@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050914">
+<title>VoiceLab — Research Workspace</title>
+
+<link rel="stylesheet" href="{{ url_for('static', path='css/common.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/molecular-lab.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/voice-research.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/analysis.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/premium-workspace.css') }}?v=final5">
+</head>
+
+<body>
+<div id="voicelab-app" class="voicelab-app">
+
+<header id="voicelab-header" class="voicelab-header">
+    <div class="vl-header-brand">
+        <div class="vl-header-mark">V</div>
+        <div class="vl-header-wordmark">
+            <strong>VoiceLab</strong>
+            <span>SCIENTIFIC VOICE RESEARCH</span>
+        </div>
+    </div>
+
+    <div class="vl-header-center" aria-label="Workspace navigation">
+        <span class="vl-header-context">RESEARCH WORKSPACE</span>
+        <span class="vl-header-divider"></span>
+        <span class="vl-header-module">MOLECULES</span>
+        <span class="vl-header-cross">×</span>
+        <span class="vl-header-module">SYMMETRY</span>
+        <span class="vl-header-cross">×</span>
+        <span class="vl-header-module">AI</span>
+    </div>
+
+    <div class="vl-header-actions">
+        <div class="vl-system-status"><i></i><span>SCIENTIFIC ENGINE</span></div>
+        <div class="vl-header-session">LIVE SESSION</div>
+    </div>
+</header>
+
+<main id="voicelab-workspace" class="voicelab-workspace">
+
+<section id="molecular-lab" class="vl-quadrant quadrant-molecular">
+    <header class="molecule-lab-header">
+        <div class="molecule-lab-heading">
+            <div class="molecule-lab-eyebrow">MOLECULAR VISUALIZATION</div>
+            <h2>Structure Viewer</h2>
+            <p>Drag, scroll, or speak — symmetry operations animate in place</p>
+        </div>
+        <div class="molecule-lab-live">
+            <span class="molecule-lab-live-dot"></span>
+            LIVE VIEW
+        </div>
+    </header>
+
+    <div class="molecule-lab-stage">
+        <div id="molecule-viewer" class="molecule-viewer"
+             aria-label="Interactive 3D molecular viewer"></div>
+
+        <div id="molecule-viewer-status" class="molecule-viewer-status"
+             data-state="idle" role="status" aria-live="polite">
+            Waiting for molecular coordinates…
+        </div>
+
+        <div class="molecule-lab-overlay">
+            <div class="molecule-lab-overlay-label">STRUCTURE</div>
+            <div id="molecule-viewer-meta" class="molecule-viewer-meta">
+                Waiting for molecule…
+            </div>
+        </div>
+    </div>
+
+    <div class="molecule-viewer-controls" aria-label="Molecule viewer controls">
+        <button type="button" data-molecule-action="rotate-left" title="Rotate left">
+            <span class="control-icon">↶</span><span>Rotate</span>
+        </button>
+        <button type="button" data-molecule-action="rotate-right" title="Rotate right">
+            <span>Rotate</span><span class="control-icon">↷</span>
+        </button>
+        <button type="button" data-molecule-action="zoom-in" title="Zoom in">
+            <span class="control-icon">＋</span><span>Zoom</span>
+        </button>
+        <button type="button" data-molecule-action="zoom-out" title="Zoom out">
+            <span class="control-icon">−</span><span>Zoom</span>
+        </button>
+        <button type="button" data-molecule-action="reset"
+                class="viewer-control-primary" title="Reset view">
+            <span class="control-icon">⌂</span><span>Reset</span>
+        </button>
+    </div>
+
+    <footer class="molecule-lab-footer">
+        <span>Drag to rotate</span>
+        <span>Scroll to zoom</span>
+        <span>Voice commands supported</span>
+    </footer>
+</section>
+
+<section id="voice-research" class="vl-quadrant quadrant-voice">
+    <header class="voice-research-header">
+        <div>
+            <div class="voice-research-eyebrow">VOICE INTERFACE</div>
+            <h2>Voice Research</h2>
+            <p>Speak naturally</p>
+        </div>
+        <div class="voice-connection">
+            <span class="voice-connection-dot"></span>
+            <span id="voice-connection-text">Connecting</span>
+        </div>
+    </header>
+
+    <div class="voice-research-body">
+        <section class="voice-core-card">
+            <div class="voice-aura"></div>
+            <div class="voice-core-visual">
+                <div class="voice-wave voice-wave-left" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+
+                <button id="voice-orb" class="voice-orb ready" type="button"
+                        aria-label="Start voice interaction">
+                    <span class="voice-orb-ring"></span>
+                    <span class="voice-orb-pulse"></span>
+                    <span class="voice-orb-letter">V</span>
+                </button>
+
+                <div class="voice-wave voice-wave-right" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div id="voice-state" class="voice-state" aria-live="polite">Ready</div>
+            <div class="voice-hint">Speak naturally to control the analysis.</div>
+        </section>
+
+        <section class="conversation-card">
+            <header class="conversation-header">
+                <div class="conversation-title">
+                    <span class="conversation-dot"></span>
+                    <span>Conversation</span>
+                </div>
+                <div class="conversation-actions">
+                    <button id="vision-screen" class="conversation-clear" type="button" title="Analyze the visible VoiceLab screen">Vision</button>
+                    <button id="replay-memory" class="conversation-clear" type="button" title="Replay this research session">Replay</button>
+                    <button id="clear-conversation" class="conversation-clear" type="button">Clear</button>
+                </div>
+            </header>
+
+            <form id="text-command-form" class="text-command-form" autocomplete="off">
+                <input id="text-command-input" class="text-command-input" type="text" maxlength="1000"
+                       placeholder="Type a command… e.g. Analyze H2O" aria-label="Type a VoiceLab command">
+                <button id="text-command-send" class="text-command-send" type="submit" aria-label="Send typed command">Send</button>
+            </form>
+
+            <div id="agent-trace" class="agent-trace" aria-live="polite">
+                <div class="trace-title">AGENT TRACE</div>
+                <div id="agent-trace-list" class="agent-trace-list"></div>
+            </div>
+            <div id="vision-result" class="vision-result" hidden></div>
+            <div id="replay-panel" class="replay-panel" hidden></div>
+            <div id="transcript" class="transcript" aria-live="polite">
+                <div id="empty-transcript" class="empty-transcript">
+                    <div class="empty-icon">V</div>
+                    <strong>No conversation yet</strong>
+                    <span>Start speaking to control the analysis.</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<section id="analysis" class="vl-quadrant quadrant-analysis">
+    <div class="analysis-card">
+        <header class="analysis-header">
+            <div>
+                <div class="analysis-eyebrow">GROUP THEORY</div>
+                <h2>Symmetry Analysis</h2>
+                <p>Derived directly from the active scientific analysis.</p>
+            </div>
+            <span class="analysis-status is-waiting"><i></i> WAITING FOR DATA</span>
+        </header>
+
+        <div class="analysis-body">
+            <div class="analysis-grid">
+                <article class="analysis-panel">
+                    <span class="panel-label">POINT GROUP</span>
+                    <strong id="point-group">—</strong>
+                    <small id="analysis-summary">Waiting for symmetry analysis…</small>
+                </article>
+
+                <article class="analysis-panel">
+                    <span class="panel-label">OPERATIONS</span>
+                    <strong id="operation-count">—</strong>
+                    <small>symmetry operations</small>
+                </article>
+
+                <article class="analysis-panel wide">
+                    <span class="panel-label">CHARACTER SNAPSHOT</span>
+                    <div id="character-row" class="character-row">
+                        <span class="character-empty">Waiting for character data…</span>
+                    </div>
+                </article>
+
+                <article class="analysis-panel wide">
+                    <span class="panel-label">SYMMETRY VERIFICATION</span>
+                    <div id="symmetry-verification" class="symmetry-verification">Waiting for geometric verification…</div>
+                </article>
+
+                <article class="analysis-panel wide" id="vibrational-analysis-panel" hidden>
+                    <span class="panel-label">VIBRATIONAL ANALYSIS</span>
+
+                    <div id="vibrational-reduction" class="vibrational-reduction">
+                        Waiting for vibrational analysis…
+                    </div>
+
+                    <div id="vibrational-modes" class="vibrational-modes"></div>
+
+                    <div class="vibrational-activity-grid">
+                        <div>
+                            <span class="vibrational-activity-label">IR ACTIVE</span>
+                            <div id="ir-active-irreps" class="vibrational-activity-value">—</div>
+                        </div>
+
+                        <div>
+                            <span class="vibrational-activity-label">RAMAN ACTIVE</span>
+                            <div id="raman-active-irreps" class="vibrational-activity-value">—</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="analysis-panel wide">
+                    <span class="panel-label">CARTESIAN REPRESENTATION</span>
+                    <div id="reduction-result" class="reduction-result">
+                        Waiting for representation reduction…
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="vl-workspace-footer">
+    <div class="vl-footer-left">
+        <span class="vl-footer-brand">VOICELAB</span>
+        <span class="vl-footer-dot">•</span>
+        <span>MAKING SCIENTIFIC EXPLORATION CONVERSATIONAL</span>
+    </div>
+    <div class="vl-footer-center">
+        <span><i></i> VOICE READY</span>
+        <span><i></i> 3D VIEWER</span>
+        <span><i></i> SYMMETRY ENGINE</span>
+    </div>
+    <div class="vl-footer-right">
+        <span>DRAG · SCROLL · SPEAK</span>
+        <span class="vl-footer-divider"></span>
+        <span>v1.0</span>
+    </div>
+</footer>
+</div>
+
+<script>
+window.VoiceLabConfig = {
+    sessionId: {{ session_id | tojson }},
+    livekitUrl: {{ livekit_url | tojson }}
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/livekit-client@2.15.6/dist/livekit-client.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="{{ url_for('static', path='js/livekit_client.js') }}"></script>
+
+<script>
+(async () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("fresh") !== "1" || !params.get("session_id")) return;
+
+    try {
+        await fetch(
+            "/api/sessions/" + encodeURIComponent(params.get("session_id")) + "/reset",
+            { method: "POST", headers: { "Content-Type": "application/json" } }
+        );
+    } catch (error) {
+        console.error("Fresh workspace reset failed:", error);
+    } finally {
+        params.delete("fresh");
+        const query = params.toString();
+        history.replaceState(
+            {},
+            "",
+            window.location.pathname + (query ? "?" + query : "") + window.location.hash
+        );
+    }
+})();
+</script>
+
+<script src="{{ url_for('static', path='js/molecule_viewer.js') }}?v=3"></script>
+<script src="{{ url_for('static', path='js/molecular-lab.js') }}"></script>
+<script src="{{ url_for('static', path='js/voice-research.js') }}"></script>
+<script src="{{ url_for('static', path='js/analysis.js') }}"></script>
+<script src="{{ url_for('static', path='js/common.js') }}"></script>
+<script src="{{ url_for('static', path='js/workspace.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VoiceLab — Verified Result</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/style.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/premium-final.css') }}?v=final3"
+    >
+</head>
+
+<body>
+
+    <main class="result-page">
+
+        <!-- ======================================================
+             Header
+        ======================================================= -->
+
+        <header class="result-header">
+
+            <a
+                href="/"
+                class="workspace-brand"
+            >
+                <div class="brand-mark">V</div>
+
+                <span class="brand-name">
+                    VoiceLab
+                </span>
+            </a>
+
+            <a
+                id="back-to-workspace"
+                class="back-link"
+                href="#"
+            >
+                ← Back to Research
+            </a>
+
+        <a href="/about" class="back-link" style="margin-left:auto">About</a>
+        </header>
+
+
+        <!-- ======================================================
+             Loading
+        ======================================================= -->
+
+        <section
+            id="loading-state"
+            class="result-loading"
+        >
+            <div class="loading-spinner"></div>
+
+            <p>
+                Preparing verified result...
+            </p>
+        </section>
+
+
+        <!-- ======================================================
+             Result Content
+        ======================================================= -->
+
+        <section
+            id="result-content"
+            class="result-content hidden"
+        >
+
+            <!-- --------------------------------------------------
+                 Title
+            --------------------------------------------------- -->
+
+            <div class="result-title-section">
+
+                <div class="panel-label">
+                    RESEARCH RESULT
+                </div>
+
+                <div class="result-title-row">
+
+                    <div>
+                        <h1>
+                            <span id="result-molecule">
+                                —
+                            </span>
+                            Symmetry Analysis
+                        </h1>
+
+                        <p id="result-summary">
+                            Verified scientific calculation.
+                        </p>
+                    </div>
+
+                    <div
+                        id="verified-badge"
+                        class="verified-badge"
+                    >
+                        <span>✓</span>
+                        VERIFIED
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- --------------------------------------------------
+                 Summary
+            --------------------------------------------------- -->
+
+            <div class="result-summary-grid">
+
+                <div class="result-summary-card">
+
+                    <span class="card-label">
+                        MOLECULE
+                    </span>
+
+                    <strong id="summary-molecule">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="result-summary-card">
+
+                    <span class="card-label">
+                        POINT GROUP
+                    </span>
+
+                    <strong id="summary-point-group">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="result-summary-card">
+
+                    <span class="card-label">
+                        VERIFICATION
+                    </span>
+
+                    <strong id="summary-verification">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- --------------------------------------------------
+                 Operations
+            --------------------------------------------------- -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Symmetry Operations
+                    </h2>
+                </div>
+
+                <div
+                    id="result-operations"
+                    class="result-operations"
+                ></div>
+
+            </section>
+
+
+            <!-- --------------------------------------------------
+                 Transformation Matrices
+            --------------------------------------------------- -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Transformation Matrices
+                    </h2>
+                </div>
+
+                <div
+                    id="result-matrices"
+                    class="result-matrices"
+                ></div>
+
+            </section>
+
+
+            <!-- --------------------------------------------------
+                 Representation
+            --------------------------------------------------- -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <h2>
+                        Representation
+                    </h2>
+                </div>
+
+                <div
+                    id="result-representation"
+                    class="result-representation"
+                ></div>
+
+            </section>
+
+
+            <!-- --------------------------------------------------
+                 Characters
+            --------------------------------------------------- -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+                    <span class="section-number">
+                        04
+                    </span>
+
+                    <h2>
+                        Characters
+                    </h2>
+                </div>
+
+                <div
+                    id="result-characters"
+                    class="result-characters"
+                ></div>
+
+            </section>
+
+
+            <!-- --------------------------------------------------
+                 Verification
+            --------------------------------------------------- -->
+
+            <section class="result-section verification-section">
+
+                <div class="section-heading">
+                    <span class="section-number">
+                        05
+                    </span>
+
+                    <h2>
+                        Independent Verification
+                    </h2>
+                </div>
+
+
+                <div
+                    id="verification-result"
+                    class="verification-result"
+                >
+
+                    <div class="verification-result-header">
+
+                        <div
+                            id="verification-icon"
+                            class="verification-result-icon"
+                        >
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <div
+                                id="verification-result-status"
+                                class="verification-result-status"
+                            >
+                                VERIFIED
+                            </div>
+
+                            <p>
+                                The calculated representation
+                                passed the verification checks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="verification-result-checks"
+                        class="verification-result-checks"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- --------------------------------------------------
+                 Export
+            --------------------------------------------------- -->
+
+            <section class="result-actions">
+
+                <button
+                    id="export-report"
+                    class="export-button"
+                    type="button"
+                >
+                    Export Report
+                    <span aria-hidden="true">↓</span>
+                </button>
+
+                <a
+                    id="research-again"
+                    class="secondary-button"
+                    href="/"
+                >
+                    New Research
+                </a>
+
+            </section>
+
+        </section>
+
+
+        <!-- ======================================================
+             Error
+        ======================================================= -->
+
+        <section
+            id="error-state"
+            class="result-error hidden"
+        >
+
+            <div class="error-icon">
+                !
+            </div>
+
+            <h2>
+                Result unavailable
+            </h2>
+
+            <p id="error-message">
+                The research session could not be loaded.
+            </p>
+
+            <a
+                href="/"
+                class="secondary-button"
+            >
+                Return Home
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================================
+         Result Logic
+    =========================================================== -->
+
+    <script>
+        (() => {
+            "use strict";
+
+
+            // =====================================================
+            // Session
+            // =====================================================
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            const sessionId =
+                params.get("session_id");
+
+
+            if (!sessionId) {
+                window.location.href = "/";
+                return;
+            }
+
+
+            // =====================================================
+            // DOM
+            // =====================================================
+
+            const loadingState =
+                document.getElementById(
+                    "loading-state"
+                );
+
+            const resultContent =
+                document.getElementById(
+                    "result-content"
+                );
+
+            const errorState =
+                document.getElementById(
+                    "error-state"
+                );
+
+            const errorMessage =
+                document.getElementById(
+                    "error-message"
+                );
+
+            const backToWorkspace =
+                document.getElementById(
+                    "back-to-workspace"
+                );
+
+            const resultMolecule =
+                document.getElementById(
+                    "result-molecule"
+                );
+
+            const resultSummary =
+                document.getElementById(
+                    "result-summary"
+                );
+
+            const verifiedBadge =
+                document.getElementById(
+                    "verified-badge"
+                );
+
+            const summaryMolecule =
+                document.getElementById(
+                    "summary-molecule"
+                );
+
+            const summaryPointGroup =
+                document.getElementById(
+                    "summary-point-group"
+                );
+
+            const summaryVerification =
+                document.getElementById(
+                    "summary-verification"
+                );
+
+            const resultOperations =
+                document.getElementById(
+                    "result-operations"
+                );
+
+            const resultMatrices =
+                document.getElementById(
+                    "result-matrices"
+                );
+
+            const resultRepresentation =
+                document.getElementById(
+                    "result-representation"
+                );
+
+            const resultCharacters =
+                document.getElementById(
+                    "result-characters"
+                );
+
+            const verificationResult =
+                document.getElementById(
+                    "verification-result"
+                );
+
+            const verificationIcon =
+                document.getElementById(
+                    "verification-icon"
+                );
+
+            const verificationResultStatus =
+                document.getElementById(
+                    "verification-result-status"
+                );
+
+            const verificationChecks =
+                document.getElementById(
+                    "verification-result-checks"
+                );
+
+            const exportButton =
+                document.getElementById(
+                    "export-report"
+                );
+
+
+            // =====================================================
+            // Links
+            // =====================================================
+
+            backToWorkspace.href =
+                "/workspace?session_id=" +
+                encodeURIComponent(
+                    sessionId
+                );
+
+
+            // =====================================================
+            // Helpers
+            // =====================================================
+
+            function escapeHtml(value) {
+                const element =
+                    document.createElement(
+                        "div"
+                    );
+
+                element.textContent =
+                    String(value);
+
+                return element.innerHTML;
+            }
+
+
+            function formatNumber(value) {
+                if (
+                    typeof value !== "number" ||
+                    !Number.isFinite(value)
+                ) {
+                    return String(value);
+                }
+
+                if (
+                    Math.abs(value) < 1e-10
+                ) {
+                    return "0";
+                }
+
+                return Number(
+                    value.toFixed(6)
+                ).toString();
+            }
+
+
+            // =====================================================
+            // Operations
+            // =====================================================
+
+            function renderOperations(
+                operations
+            ) {
+                resultOperations.innerHTML = "";
+
+                if (
+                    !Array.isArray(operations) ||
+                    operations.length === 0
+                ) {
+                    resultOperations.innerHTML =
+                        "<p class='result-placeholder'>No operations available.</p>";
+
+                    return;
+                }
+
+
+                operations.forEach(
+                    operation => {
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+                        item.className =
+                            "result-operation";
+
+
+                        const symbol =
+                            operation.symbol ||
+                            operation.id ||
+                            "—";
+
+
+                        const type =
+                            operation.type ||
+                            "symmetry operation";
+
+
+                        item.innerHTML = `
+                            <div class="result-operation-symbol">
+                                ${escapeHtml(symbol)}
+                            </div>
+
+                            <div class="result-operation-details">
+                                <strong>
+                                    ${escapeHtml(symbol)}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(type)}
+                                </span>
+                            </div>
+                        `;
+
+
+                        resultOperations.appendChild(
+                            item
+                        );
+                    }
+                );
+            }
+
+
+            // =====================================================
+            // Matrix table
+            // =====================================================
+
+            function createMatrixTable(
+                matrix
+            ) {
+                const table =
+                    document.createElement(
+                        "table"
+                    );
+
+                table.className =
+                    "result-matrix-table";
+
+
+                if (
+                    !Array.isArray(matrix)
+                ) {
+                    return table;
+                }
+
+
+                matrix.forEach(
+                    row => {
+
+                        const tr =
+                            document.createElement(
+                                "tr"
+                            );
+
+
+                        if (
+                            !Array.isArray(row)
+                        ) {
+                            return;
+                        }
+
+
+                        row.forEach(
+                            value => {
+
+                                const td =
+                                    document.createElement(
+                                        "td"
+                                    );
+
+                                td.textContent =
+                                    formatNumber(
+                                        value
+                                    );
+
+                                tr.appendChild(
+                                    td
+                                );
+                            }
+                        );
+
+
+                        table.appendChild(
+                            tr
+                        );
+                    }
+                );
+
+
+                return table;
+            }
+
+
+            // =====================================================
+            // Matrices
+            // =====================================================
+
+            function renderMatrices(
+                matrices
+            ) {
+                resultMatrices.innerHTML = "";
+
+
+                if (
+                    !matrices ||
+                    typeof matrices !== "object"
+                ) {
+                    resultMatrices.innerHTML =
+                        "<p class='result-placeholder'>No matrices available.</p>";
+
+                    return;
+                }
+
+
+                Object.entries(
+                    matrices
+                ).forEach(
+                    ([operationId, matrix]) => {
+
+                        const block =
+                            document.createElement(
+                                "div"
+                            );
+
+                        block.className =
+                            "result-matrix-block";
+
+
+                        const title =
+                            document.createElement(
+                                "div"
+                            );
+
+                        title.className =
+                            "result-matrix-title";
+
+                        title.textContent =
+                            operationId;
+
+
+                        block.appendChild(
+                            title
+                        );
+
+                        block.appendChild(
+                            createMatrixTable(
+                                matrix
+                            )
+                        );
+
+
+                        resultMatrices.appendChild(
+                            block
+                        );
+                    }
+                );
+            }
+
+
+            // =====================================================
+            // Representation
+            // =====================================================
+
+            function renderRepresentation(
+                representation
+            ) {
+                resultRepresentation.innerHTML = "";
+
+
+                const matrices =
+                    representation &&
+                    (
+                        representation.representation_matrices ||
+                        representation.matrices ||
+                        representation
+                    );
+
+
+                if (
+                    !matrices ||
+                    typeof matrices !== "object"
+                ) {
+                    resultRepresentation.innerHTML =
+                        "<p class='result-placeholder'>No representation available.</p>";
+
+                    return;
+                }
+
+
+                Object.entries(
+                    matrices
+                ).forEach(
+                    ([operationId, matrix]) => {
+
+                        const block =
+                            document.createElement(
+                                "div"
+                            );
+
+                        block.className =
+                            "result-representation-block";
+
+
+                        const title =
+                            document.createElement(
+                                "div"
+                            );
+
+                        title.className =
+                            "result-matrix-title";
+
+                        title.textContent =
+                            operationId;
+
+
+                        block.appendChild(
+                            title
+                        );
+
+                        block.appendChild(
+                            createMatrixTable(
+                                matrix
+                            )
+                        );
+
+
+                        resultRepresentation.appendChild(
+                            block
+                        );
+                    }
+                );
+            }
+
+
+            // =====================================================
+            // Characters
+            // =====================================================
+
+            function renderCharacters(
+                characters
+            ) {
+                resultCharacters.innerHTML = "";
+
+
+                const values =
+                    characters &&
+                    (
+                        characters.characters ||
+                        characters
+                    );
+
+
+                if (
+                    !values ||
+                    typeof values !== "object"
+                ) {
+                    resultCharacters.innerHTML =
+                        "<p class='result-placeholder'>No characters available.</p>";
+
+                    return;
+                }
+
+
+                Object.entries(
+                    values
+                ).forEach(
+                    ([operationId, value]) => {
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+                        item.className =
+                            "result-character";
+
+
+                        item.innerHTML = `
+                            <span>
+                                ${escapeHtml(
+                                    operationId
+                                )}
+                            </span>
+
+                            <strong>
+                                ${escapeHtml(
+                                    formatNumber(value)
+                                )}
+                            </strong>
+                        `;
+
+
+                        resultCharacters.appendChild(
+                            item
+                        );
+                    }
+                );
+            }
+
+
+            // =====================================================
+            // Verification
+            // =====================================================
+
+            function renderVerification(
+                verification
+            ) {
+                const status =
+                    verification &&
+                    verification.status
+                        ? verification.status
+                        : "FLAG";
+
+
+                const passed =
+                    status === "PASS";
+
+
+                if (passed) {
+
+                    verifiedBadge.classList.remove(
+                        "hidden"
+                    );
+
+                    verificationIcon.textContent =
+                        "✓";
+
+                    verificationIcon.classList.remove(
+                        "failed"
+                    );
+
+                    verificationResultStatus.textContent =
+                        "VERIFIED";
+
+                    verificationResultStatus.classList.remove(
+                        "failed"
+                    );
+
+                    summaryVerification.textContent =
+                        "PASS";
+
+                } else {
+
+                    verifiedBadge.classList.add(
+                        "hidden"
+                    );
+
+                    verificationIcon.textContent =
+                        "!";
+
+                    verificationIcon.classList.add(
+                        "failed"
+                    );
+
+                    verificationResultStatus.textContent =
+                        "VERIFICATION FLAGGED";
+
+                    verificationResultStatus.classList.add(
+                        "failed"
+                    );
+
+                    summaryVerification.textContent =
+                        "FLAG";
+                }
+
+
+                verificationChecks.innerHTML = "";
+
+
+                const checks =
+                    verification &&
+                    verification.checks
+                        ? verification.checks
+                        : {};
+
+
+                Object.entries(
+                    checks
+                ).forEach(
+                    ([name, value]) => {
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+                        item.className =
+                            "result-verification-check";
+
+
+                        const passedCheck =
+                            value === "PASS";
+
+
+                        item.innerHTML = `
+                            <span
+                                class="verification-check-icon ${
+                                    passedCheck
+                                        ? ""
+                                        : "failed"
+                                }"
+                            >
+                                ${
+                                    passedCheck
+                                        ? "✓"
+                                        : "!"
+                                }
+                            </span>
+
+                            <span>
+                                ${escapeHtml(name)}
+                            </span>
+
+                            <strong>
+                                ${escapeHtml(value)}
+                            </strong>
+                        `;
+
+
+                        verificationChecks.appendChild(
+                            item
+                        );
+                    }
+                );
+
+
+                if (
+                    verification &&
+                    Array.isArray(
+                        verification.errors
+                    ) &&
+                    verification.errors.length > 0
+                ) {
+
+                    verification.errors.forEach(
+                        error => {
+
+                            const item =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            item.className =
+                                "result-verification-error";
+
+                            item.textContent =
+                                String(error);
+
+                            verificationChecks.appendChild(
+                                item
+                            );
+                        }
+                    );
+                }
+            }
+
+
+            // =====================================================
+            // Render complete state
+            // =====================================================
+
+            function renderState(
+                state
+            ) {
+                if (!state) {
+                    throw new Error(
+                        "Research state is empty."
+                    );
+                }
+
+
+                const molecule =
+                    state.molecule ||
+                    "—";
+
+
+                const pointGroup =
+                    state.point_group ||
+                    "—";
+
+
+                resultMolecule.textContent =
+                    molecule;
+
+                summaryMolecule.textContent =
+                    molecule;
+
+                summaryPointGroup.textContent =
+                    pointGroup;
+
+
+                resultSummary.textContent =
+                    pointGroup !== "—"
+                        ? `${molecule} belongs to the ${pointGroup} point group.`
+                        : "Scientific calculation completed.";
+
+
+                renderOperations(
+                    state.operations
+                );
+
+
+                renderMatrices(
+                    state.matrices
+                );
+
+
+                renderRepresentation(
+                    state.representation
+                );
+
+
+                renderCharacters(
+                    state.characters
+                );
+
+
+                renderVerification(
+                    state.verification
+                );
+            }
+
+
+            // =====================================================
+            // Show error
+            // =====================================================
+
+            function showError(
+                message
+            ) {
+                loadingState.classList.add(
+                    "hidden"
+                );
+
+                resultContent.classList.add(
+                    "hidden"
+                );
+
+                errorState.classList.remove(
+                    "hidden"
+                );
+
+                errorMessage.textContent =
+                    message;
+            }
+
+
+            // =====================================================
+            // Load session
+            // =====================================================
+
+            async function loadResult() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/sessions/" +
+                            encodeURIComponent(
+                                sessionId
+                            )
+                        );
+
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Research session not found."
+                        );
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (
+                        !data.success ||
+                        !data.state
+                    ) {
+                        throw new Error(
+                            "Research result is unavailable."
+                        );
+                    }
+
+
+                    renderState(
+                        data.state
+                    );
+
+
+                    loadingState.classList.add(
+                        "hidden"
+                    );
+
+                    resultContent.classList.remove(
+                        "hidden"
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Failed to load result:",
+                        error
+                    );
+
+
+                    showError(
+                        error.message ||
+                        "Unable to load the research result."
+                    );
+                }
+            }
+
+
+            // =====================================================
+            // Export Report
+            // =====================================================
+
+            exportButton.addEventListener(
+                "click",
+                async () => {
+
+                    const originalText =
+                        exportButton.innerHTML;
+
+
+                    exportButton.disabled =
+                        true;
+
+                    exportButton.innerHTML =
+                        "Preparing report...";
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                "/api/sessions/" +
+                                encodeURIComponent(
+                                    sessionId
+                                ) +
+                                "/report"
+                            );
+
+
+                        if (!response.ok) {
+                            throw new Error(
+                                "Unable to generate report."
+                            );
+                        }
+
+
+                        const report =
+                            await response.text();
+
+
+                        const blob =
+                            new Blob(
+                                [
+                                    report
+                                ],
+                                {
+                                    type:
+                                        "text/html;charset=utf-8"
+                                }
+                            );
+
+
+                        const url =
+                            URL.createObjectURL(
+                                blob
+                            );
+
+
+                        const link =
+                            document.createElement(
+                                "a"
+                            );
+
+                        link.href =
+                            url;
+
+                        link.download =
+                            "voicelab-" +
+                            (
+                                resultMolecule.textContent ||
+                                "research"
+                            ).toLowerCase() +
+                            "-report.html";
+
+
+                        document.body.appendChild(
+                            link
+                        );
+
+                        link.click();
+
+                        link.remove();
+
+
+                        URL.revokeObjectURL(
+                            url
+                        );
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Report export failed:",
+                            error
+                        );
+
+
+                        window.alert(
+                            "Unable to export the report. Please try again."
+                        );
+
+                    } finally {
+
+                        exportButton.disabled =
+                            false;
+
+                        exportButton.innerHTML =
+                            originalText;
+                    }
+                }
+            );
+
+
+            // =====================================================
+            // Initialize
+            // =====================================================
+
+            loadResult();
+
+        })();
+    </script>
+
+</body>
+</html>

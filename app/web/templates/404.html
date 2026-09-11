@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>404 — VoiceLab</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            background: #070b16;
+            color: #eef2ff;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(102, 88, 255, 0.14),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 15% 85%,
+                    rgba(56, 105, 255, 0.08),
+                    transparent 30%
+                );
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            width: min(560px, calc(100% - 40px));
+            text-align: center;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 34px;
+            color: #aebcff;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .brand-mark {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #8375ff;
+            box-shadow: 0 0 18px rgba(131, 117, 255, 0.7);
+        }
+
+        .error-code {
+            margin: 0;
+            font-size: clamp(96px, 18vw, 160px);
+            line-height: 0.9;
+            font-weight: 700;
+            letter-spacing: -0.08em;
+            background: linear-gradient(
+                135deg,
+                #ffffff 0%,
+                #a9b4ff 48%,
+                #7567ff 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .title {
+            margin: 28px 0 10px;
+            font-size: clamp(25px, 5vw, 34px);
+            line-height: 1.2;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .message {
+            max-width: 430px;
+            margin: 0 auto;
+            color: #8190b2;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0 20px;
+            border-radius: 11px;
+            border: 1px solid rgba(132, 144, 190, 0.2);
+            color: #dfe5ff;
+            background: rgba(19, 25, 43, 0.72);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition:
+                transform 160ms ease,
+                border-color 160ms ease,
+                background 160ms ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            border-color: rgba(132, 117, 255, 0.5);
+            background: rgba(31, 37, 62, 0.9);
+        }
+
+        .button.primary {
+            border-color: rgba(126, 111, 255, 0.65);
+            background: linear-gradient(
+                135deg,
+                rgba(103, 88, 255, 0.95),
+                rgba(74, 91, 214, 0.95)
+            );
+            color: #ffffff;
+            box-shadow: 0 8px 28px rgba(76, 66, 190, 0.22);
+        }
+
+        .footer {
+            margin-top: 48px;
+            color: #4e5b78;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 520px) {
+            .page {
+                width: min(100% - 28px, 560px);
+            }
+
+            .brand {
+                margin-bottom: 26px;
+            }
+
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+
+        <div class="brand">
+            <span class="brand-mark"></span>
+            VoiceLab
+        </div>
+
+        <div class="error-code">404</div>
+
+        <h1 class="title">Page not found</h1>
+
+        <p class="message">
+            The page you're looking for doesn't exist or may have been moved.
+        </p>
+
+        <div class="actions">
+            <a href="/workspace" class="button primary">
+                Back to Workspace
+            </a>
+
+            <a href="/" class="button">
+                Go Home
+            </a>
+        </div>
+
+        <div class="footer">
+            VoiceLab · Scientific Research Copilot
+        </div>
+
+    </main>
+</body>
+</html>

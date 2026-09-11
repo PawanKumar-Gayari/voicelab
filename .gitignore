@@ -1,0 +1,40 @@
+# Secrets / environment
+.env
+.env.*
+!.env.example
+!.env.livekit.example
+!.env.production.example
+
+# Python environments
+.venv/
+venv/
+
+# Python cache / bytecode
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Databases / production state
+*.db
+*.db-shm
+*.db-wal
+
+# Logs / runtime
+*.log
+*.pid
+
+# Local backups / archives
+*.bak
+*.bak-*
+*.backup
+*.backup-*
+*.before-*
+*.old
+*.orig
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

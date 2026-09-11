@@ -1,0 +1,807 @@
+
+:root {
+    --bg: #07090d;
+    --panel: #0d1118;
+    --panel-2: #111720;
+    --border: rgba(255,255,255,.09);
+    --text: #f4f7fb;
+    --muted: #8d98a8;
+    --accent: #7dd3fc;
+    --pass: #67e8a5;
+    --fail: #fb7185;
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(125,211,252,.08), transparent 32%),
+        radial-gradient(circle at 90% 10%, rgba(167,139,250,.07), transparent 28%),
+        var(--bg);
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.replay-page {
+    width: min(1280px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 36px 0 64px;
+}
+
+.replay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.eyebrow,
+.label {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 7px 0 6px;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: -.035em;
+}
+
+h2 {
+    margin: 5px 0 0;
+    font-size: 18px;
+}
+
+#replay-subtitle {
+    margin: 0;
+    color: var(--muted);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.replay-button {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 15px;
+    background: var(--text);
+    color: #080a0d;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.replay-button.secondary {
+    background: var(--panel);
+    color: var(--text);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.hero-card,
+.panel {
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+}
+
+.hero-card {
+    padding: 20px;
+}
+
+.hero-card strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.replay-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.panel {
+    padding: 22px;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.badge {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 5px 9px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+
+.operation-list,
+.verification-list {
+    display: grid;
+    gap: 8px;
+}
+
+.operation,
+.verification-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255,255,255,.025);
+}
+
+.operation-symbol {
+    font-weight: 750;
+}
+
+.pass {
+    color: var(--pass);
+}
+
+.fail {
+    color: var(--fail);
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.character {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(255,255,255,.025);
+}
+
+.character span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.character strong {
+    font-size: 20px;
+}
+
+.reduction-summary {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 17px;
+}
+
+.multiplicity-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.multiplicity {
+    padding: 10px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.multiplicity span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.basis-functions {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.timeline-panel {
+    margin-top: 14px;
+}
+
+.timeline {
+    display: grid;
+    gap: 9px;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 13px 15px 13px 18px;
+    border-left: 2px solid rgba(125,211,252,.35);
+    background: rgba(255,255,255,.018);
+    border-radius: 0 10px 10px 0;
+}
+
+.timeline-version {
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.timeline-title {
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.timeline-detail {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.empty {
+    color: var(--muted);
+    padding: 10px 0;
+}
+
+@media (max-width: 850px) {
+    .hero-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .replay-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .replay-page {
+        width: min(100% - 24px, 1280px);
+        padding-top: 22px;
+    }
+
+    .replay-header {
+        flex-direction: column;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .character-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+/* ================================================================
+   VoiceLab — Research Replay / Workspace Visual Unification
+   Presentation layer only.
+   Replay data and rendering logic remain unchanged.
+   ================================================================ */
+
+:root {
+    color-scheme: dark;
+    --bg: #030814;
+    --panel: #081426;
+    --panel-2: #0b1930;
+    --border: rgba(93,126,178,.22);
+    --text: #edf4ff;
+    --muted: #6f829f;
+    --accent: #7d9dff;
+    --pass: #49e4c1;
+    --fail: #ff7b87;
+}
+
+html {
+    background: #030814;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 18%, rgba(34,91,255,.12), transparent 30%),
+        radial-gradient(circle at 78% 65%, rgba(112,45,255,.09), transparent 27%),
+        linear-gradient(180deg, #030814, #050b18 60%, #020711);
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.replay-page {
+    width: min(1480px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 18px 0 34px;
+}
+
+/* Header */
+
+.replay-header {
+    min-height: 62px;
+    margin-bottom: 12px;
+    padding: 0 14px;
+    align-items: center;
+    border: 1px solid rgba(91,126,183,.18);
+    border-radius: 15px;
+    background:
+        linear-gradient(180deg, rgba(10,20,37,.92), rgba(5,13,27,.78));
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.035);
+    backdrop-filter: blur(18px);
+}
+
+.replay-header .eyebrow,
+.panel-heading .eyebrow,
+.label {
+    color: #7894c0;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: .18em;
+}
+
+#replay-title {
+    margin: 4px 0 3px;
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -.025em;
+    color: #f4f7ff;
+}
+
+#replay-subtitle {
+    color: #637a9e;
+    font-size: 8px;
+}
+
+.header-actions {
+    gap: 7px;
+}
+
+.replay-button {
+    min-height: 28px;
+    padding: 0 11px;
+    border: 1px solid rgba(91,122,169,.22);
+    border-radius: 9px;
+    background: rgba(12,24,43,.86);
+    color: #c8d5e8;
+    font-size: 8px;
+    font-weight: 800;
+    transition: .2s ease;
+}
+
+.replay-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(82,135,255,.55);
+    box-shadow: 0 0 18px rgba(47,102,255,.12);
+}
+
+.replay-button.secondary {
+    background: rgba(8,19,35,.75);
+    color: #aebee0;
+}
+
+/* Top metric cards */
+
+.hero-grid {
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.hero-card,
+.panel {
+    border: 1px solid rgba(85,116,165,.18);
+    border-radius: 13px;
+    background:
+        linear-gradient(145deg, rgba(13,26,47,.88), rgba(6,15,30,.86));
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+.hero-card {
+    min-height: 72px;
+    padding: 13px 15px;
+}
+
+.hero-card strong {
+    margin-top: 7px;
+    font-size: 20px;
+    color: #edf4ff;
+    text-shadow: 0 0 18px rgba(91,139,255,.12);
+}
+
+/* Main panels */
+
+.replay-grid {
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.panel {
+    padding: 14px;
+}
+
+.panel-heading {
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.panel-heading h2 {
+    margin-top: 4px;
+    font-size: 14px;
+    letter-spacing: -.01em;
+    color: #f1f6ff;
+}
+
+.badge {
+    padding: 5px 8px;
+    border-color: rgba(87,119,170,.20);
+    background: rgba(8,19,35,.58);
+    color: #7189ad;
+    font-size: 7px;
+    letter-spacing: .11em;
+}
+
+/* Operations */
+
+.operation-list,
+.verification-list {
+    gap: 5px;
+}
+
+.operation,
+.verification-item {
+    min-height: 29px;
+    padding: 7px 9px;
+    border: 1px solid rgba(82,121,183,.14);
+    border-radius: 8px;
+    background: rgba(13,28,49,.50);
+    font-size: 8px;
+}
+
+.operation-symbol {
+    color: #c8d6e9;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.pass {
+    color: #4fe0bc;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: .05em;
+}
+
+.fail {
+    color: #ff7b87;
+}
+
+/* Character snapshot */
+
+.character-grid {
+    gap: 5px;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+}
+
+.character {
+    min-height: 45px;
+    padding: 8px 5px;
+    border: 1px solid rgba(76,118,184,.20);
+    border-radius: 8px;
+    background: rgba(16,31,53,.62);
+}
+
+.character span {
+    margin-bottom: 4px;
+    color: #b9cbe5;
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.character strong {
+    font-size: 14px;
+    color: #edf4ff;
+}
+
+/* Cartesian representation */
+
+.reduction-summary {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1px solid rgba(76,118,184,.18);
+    border-radius: 9px;
+    background: rgba(11,24,44,.72);
+    color: #dce8fa;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .01em;
+    overflow-x: auto;
+}
+
+.multiplicity-grid {
+    gap: 5px;
+    margin-top: 7px;
+}
+
+.multiplicity {
+    padding: 8px 6px;
+    border: 1px solid rgba(82,121,183,.14);
+    border-radius: 8px;
+    background: rgba(16,30,51,.48);
+}
+
+.multiplicity span {
+    color: #7890b4;
+    font-size: 8px;
+}
+
+.multiplicity strong {
+    color: #e7efff;
+    font-size: 13px;
+}
+
+/* Verification */
+
+.verification-item {
+    color: #9db1d0;
+}
+
+.verification-item strong {
+    font-size: 7px;
+}
+
+/* Timeline */
+
+.timeline-panel {
+    margin-top: 8px;
+}
+
+.timeline {
+    gap: 5px;
+}
+
+.timeline-item {
+    padding: 9px 11px 9px 13px;
+    border-left: 2px solid rgba(125,157,255,.28);
+    border-radius: 0 8px 8px 0;
+    background: rgba(255,255,255,.018);
+}
+
+.timeline-version {
+    color: #7189ad;
+    font-size: 7px;
+}
+
+.timeline-title {
+    margin-top: 3px;
+    color: #dce7f8;
+    font-size: 9px;
+}
+
+.timeline-detail {
+    margin-top: 3px;
+    color: #637a9e;
+    font-size: 8px;
+}
+
+/* Empty states */
+
+.empty {
+    color: #637a9e;
+    font-size: 8px;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+    .replay-page {
+        width: min(100% - 28px, 1480px);
+    }
+
+    .hero-card strong {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 850px) {
+    .replay-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .replay-page {
+        width: calc(100% - 18px);
+        padding-top: 10px;
+    }
+
+    .replay-header {
+        padding: 10px;
+    }
+
+    .replay-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-actions {
+        justify-content: flex-end;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .character-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .panel {
+        padding: 11px;
+    }
+
+    .reduction-summary {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   VoiceLab — Final Research Replay Readability Polish
+   ========================================================= */
+
+.replay-page .replay-header {
+    padding: 22px 24px;
+}
+
+.replay-page .replay-header h1 {
+    font-size: clamp(1.55rem, 2.1vw, 2rem);
+    letter-spacing: -0.025em;
+}
+
+.replay-page .replay-header .subtitle {
+    font-size: 0.88rem;
+}
+
+.replay-page .eyebrow,
+.replay-page .panel-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+}
+
+.replay-page .panel h2 {
+    font-size: 1.05rem;
+}
+
+.replay-page .hero-card .value,
+.replay-page .stat-value {
+    font-size: 1.12rem;
+}
+
+.replay-page .character-value,
+.replay-page .character-name {
+    font-size: 0.92rem;
+}
+
+.replay-page .operation-row,
+.replay-page .verification-row,
+.replay-page .timeline-item {
+    font-size: 0.9rem;
+}
+
+/* Make Cartesian representation the scientific focal point */
+.replay-page .reduction-summary {
+    font-size: clamp(1.25rem, 2vw, 1.65rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    padding: 18px 20px;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .replay-page .replay-header {
+        padding: 18px;
+    }
+
+    .replay-page .reduction-summary {
+        font-size: 1.18rem;
+    }
+}
+
+/* =========================================================
+   VoiceLab — Replay Header Controls Polish
+   ========================================================= */
+
+.replay-page .replay-header {
+    position: relative;
+}
+
+.replay-page .replay-header .header-actions,
+.replay-page .replay-header .replay-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.replay-page .replay-header button,
+.replay-page .replay-header a {
+    min-height: 34px;
+    padding: 0 13px;
+    border-radius: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+/* Keep controls visually aligned with the Workspace UI */
+.replay-page .replay-header button:hover,
+.replay-page .replay-header a:hover {
+    transform: translateY(-1px);
+}
+
+/* Prevent controls from becoming cramped on narrow screens */
+@media (max-width: 700px) {
+    .replay-page .replay-header {
+        gap: 14px;
+    }
+
+    .replay-page .replay-header button,
+    .replay-page .replay-header a {
+        min-height: 32px;
+        padding: 0 11px;
+    }
+}
+
+
+/* =========================================================
+   Replay — Consistent Waiting State Typography
+   ========================================================= */
+
+.replay-page .verification-message,
+.replay-page .verification-status,
+.replay-page .waiting-message,
+.replay-page .verification-panel .message {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    font-weight: 500;
+}
+
+.replay-page #reduction-summary {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    font-weight: 500;
+}

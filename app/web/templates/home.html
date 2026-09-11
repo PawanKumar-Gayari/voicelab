@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceLab — Speak Science</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/premium-final.css') }}?v=final3">
+</head>
+<body>
+<main class="home-page premium-home">
+    <header class="home-nav">
+        <a class="home-brand" href="/" aria-label="VoiceLab home">
+            <span class="brand-mark">V</span><span class="brand-name">VoiceLab</span>
+        </a>
+        <div class="home-nav-links" aria-label="VoiceLab capabilities">
+            <span>SCIENCE</span><b>×</b><span>VOICE</span><b>×</b><span>AI</span><b>×</b><span>EXPLORATION</span><b>×</b><a href="/about" style="color:inherit;text-decoration:none">ABOUT</a>
+        </div>
+    </header>
+
+    <section class="home-hero-grid">
+        <div class="home-copy">
+            <div class="hero-kicker">VOICE-FIRST SCIENTIFIC RESEARCH</div>
+            <h1>Speak Science<br><span>Explore <em>More</em></span></h1>
+            <p class="hero-description">An AI-powered voice research assistant for molecules, symmetry, mathematics, and scientific exploration.</p>
+
+            <div class="home-feature-row">
+                <div class="home-feature"><i class="feature-icon">♩</i><span>Voice<br>Interaction</span></div>
+                <div class="home-feature"><i class="feature-icon">✦</i><span>AI<br>Reasoning</span></div>
+                <div class="home-feature"><i class="feature-icon">⚗</i><span>Scientific<br>Computation</span></div>
+                <div class="home-feature"><i class="feature-icon">◇</i><span>Interactive<br>Workspace</span></div>
+            </div>
+
+            <button id="start-research" class="start-button premium-start" type="button">
+                <span>Turn your curiosity into discovery.</span><strong>→</strong>
+            </button>
+        </div>
+
+        <div class="home-visual" aria-hidden="true">
+            <div class="molecule molecule-water"><span class="atom atom-o"></span><span class="atom atom-h1"></span><span class="atom atom-h2"></span><i>H₂O</i></div>
+            <div class="molecule molecule-ch4"><span class="atom atom-c"></span><span class="atom atom-t1"></span><span class="atom atom-t2"></span><span class="atom atom-t3"></span><span class="atom atom-t4"></span><i>CH₄</i></div>
+            <div class="molecule molecule-c2h4"><span class="atom atom-c1"></span><span class="atom atom-c2"></span><span class="atom atom-h-a"></span><span class="atom atom-h-b"></span><span class="atom atom-h-c"></span><span class="atom atom-h-d"></span><i>C₂H₄</i></div>
+            <div class="voice-bubble bubble-blue">“What is the<br>point group of H₂O?”</div>
+            <div class="voice-bubble bubble-purple">“Show me the<br>symmetry operations.”</div>
+            <div class="voice-bubble bubble-cyan">“Explain the<br>transformation matrix.”</div>
+            <div class="voice-orbit orbit-one"></div><div class="voice-orbit orbit-two"></div>
+            <div class="hero-orb"><span>V</span></div>
+            <div class="wave wave-left"></div><div class="wave wave-right"></div>
+            <div class="just-ask">Just ask…<span></span></div>
+            <div class="landing-ring"></div>
+        </div>
+    </section>
+
+    <footer class="home-footer">
+        <span>MOLECULES</span><b>|</b><span>SYMMETRY</span><b>|</b><span>MATHEMATICS</span><b>|</b><span>INSIGHTS</span>
+        <small>MAKING SCIENTIFIC EXPLORATION CONVERSATIONAL</small>
+    </footer>
+</main>
+
+<script>
+(() => {
+    const button = document.getElementById('start-research');
+    if (!button) return;
+    button.addEventListener('click', async () => {
+        button.disabled = true;
+        const old = button.innerHTML;
+        button.innerHTML = '<span>Starting research…</span><strong>→</strong>';
+        try {
+            const response = await fetch('/api/sessions', {method:'POST', headers:{'Content-Type':'application/json'}});
+            if (!response.ok) throw new Error('Unable to create research session.');
+            const data = await response.json();
+            if (!data.success || !data.session_id) throw new Error('Invalid session response.');
+            window.location.href = `/workspace?session_id=${encodeURIComponent(data.session_id)}&fresh=1`;
+        } catch (error) {
+            console.error('Failed to start VoiceLab:', error);
+            button.disabled = false; button.innerHTML = old;
+            window.alert('Unable to start the research session. Please try again.');
+        }
+    });
+})();
+</script>
+</body>
+</html>

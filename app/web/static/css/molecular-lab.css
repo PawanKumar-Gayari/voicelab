@@ -1,0 +1,656 @@
+/* =========================================================
+   CARD 1 — 3D MOLECULAR LAB
+   css/molecular-lab.css
+
+   Visual layer for the Molecular Lab card.
+   Three.js rendering is implemented in molecule_viewer.js.
+   ========================================================= */
+
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+
+.quadrant-molecular {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.molecule-lab-panel {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 12% 5%,
+            rgba(102, 116, 255, 0.13),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 88% 92%,
+            rgba(45, 212, 191, 0.07),
+            transparent 29%
+        ),
+        linear-gradient(
+            145deg,
+            #0a101e 0%,
+            #0d1526 48%,
+            #080f1e 100%
+        );
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.molecule-lab-header {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 17px 19px 14px;
+
+    border-bottom:
+        1px solid rgba(148, 163, 184, 0.10);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.018),
+            transparent
+        );
+}
+
+.molecule-lab-heading {
+    min-width: 0;
+}
+
+.molecule-lab-eyebrow {
+    margin-bottom: 5px;
+
+    color: #8ea2c7;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.molecule-lab-header h2 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 19px;
+    font-weight: 750;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.025em;
+}
+
+.molecule-lab-header p {
+    margin: 5px 0 0;
+
+    color: #8493ad;
+
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   LIVE
+   ========================================================= */
+
+.molecule-lab-live {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    flex: 0 0 auto;
+
+    padding: 6px 10px;
+
+    border:
+        1px solid rgba(100, 116, 139, 0.22);
+
+    border-radius: 999px;
+
+    background:
+        rgba(15, 25, 43, 0.72);
+
+    color: #a9b8d1;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.11em;
+}
+
+.molecule-lab-live-dot {
+    width: 6px;
+    height: 6px;
+
+    flex: 0 0 6px;
+
+    border-radius: 50%;
+
+    background: #55d6a2;
+
+    box-shadow:
+        0 0 8px rgba(85, 214, 162, 0.70);
+}
+
+
+/* =========================================================
+   SELECTOR
+   ========================================================= */
+
+.molecule-lab-controls-row {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 16px 9px;
+}
+
+.molecule-select-label {
+    color: #7184a5;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.10em;
+
+    text-transform: uppercase;
+}
+
+#molecule-lab-select {
+    min-width: 0;
+
+    flex: 1 1 auto;
+
+    height: 34px;
+
+    padding: 0 10px;
+
+    border:
+        1px solid rgba(100, 116, 139, 0.24);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background:
+        rgba(10, 19, 35, 0.90);
+
+    color: #dbe5f4;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#molecule-lab-select:hover {
+    border-color:
+        rgba(129, 140, 248, 0.38);
+}
+
+#molecule-lab-select:focus {
+    border-color:
+        rgba(129, 140, 248, 0.55);
+
+    box-shadow:
+        0 0 0 2px rgba(102, 116, 255, 0.08);
+}
+
+
+/* =========================================================
+   VIEWER STAGE
+   ========================================================= */
+
+.molecule-lab-stage {
+    position: relative;
+
+    flex: 1 1 auto;
+
+    min-height: 260px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 44%,
+            rgba(91, 112, 160, 0.12),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(102, 116, 255, 0.045),
+            transparent 57%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(4, 9, 20, 0.05),
+            rgba(2, 6, 16, 0.36)
+        );
+}
+
+.molecule-lab-stage::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(102, 116, 255, 0.018),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   THREE.JS VIEWER TARGET
+   ========================================================= */
+
+#molecule-viewer,
+.molecule-viewer {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    touch-action: none;
+}
+
+#molecule-viewer canvas,
+.molecule-viewer canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    outline: none;
+
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/* =========================================================
+   STRUCTURE OVERLAY
+   ========================================================= */
+
+.molecule-lab-overlay {
+    position: absolute;
+
+    left: 14px;
+    top: 13px;
+
+    z-index: 5;
+
+    max-width: min(62%, 290px);
+
+    padding: 8px 11px;
+
+    border:
+        1px solid rgba(148, 163, 184, 0.13);
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 18, 34, 0.78),
+            rgba(7, 12, 24, 0.62)
+        );
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    pointer-events: none;
+}
+
+.molecule-lab-overlay-label {
+    margin-bottom: 3px;
+
+    color: #7184a5;
+
+    font-size: 7px;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+.molecule-viewer-meta {
+    min-width: 0;
+
+    color: #dce6f5;
+
+    font-size: 10px;
+    font-weight: 650;
+
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.molecule-viewer-status {
+    position: absolute;
+
+    right: 14px;
+    bottom: 13px;
+
+    z-index: 5;
+
+    max-width: 70%;
+
+    padding: 6px 10px;
+
+    border:
+        1px solid rgba(148, 163, 184, 0.13);
+
+    border-radius: 999px;
+
+    background:
+        rgba(8, 15, 28, 0.72);
+
+    color: #8ea0bd;
+
+    font-size: 8px;
+    line-height: 1.2;
+
+    pointer-events: none;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.molecule-viewer-status[data-state="active"] {
+    color: #cbd8eb;
+
+    border-color:
+        rgba(45, 212, 191, 0.18);
+
+    background:
+        rgba(7, 25, 29, 0.58);
+}
+
+.molecule-viewer-status[data-state="error"] {
+    color: #ff9f9a;
+
+    border-color:
+        rgba(255, 143, 135, 0.22);
+
+    background:
+        rgba(55, 17, 25, 0.50);
+}
+
+
+/* =========================================================
+   VIEWER CONTROLS
+   ========================================================= */
+
+.molecule-viewer-controls {
+    position: relative;
+    z-index: 6;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 12px;
+
+    border-top:
+        1px solid rgba(148, 163, 184, 0.09);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3, 8, 18, 0.68),
+            rgba(6, 11, 22, 0.84)
+        );
+}
+
+.molecule-viewer-controls button {
+    min-width: 0;
+    min-height: 32px;
+
+    flex: 1 1 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 5px 8px;
+
+    border:
+        1px solid rgba(100, 116, 139, 0.20);
+
+    border-radius: 8px;
+
+    background:
+        rgba(18, 29, 49, 0.72);
+
+    color: #aebbd0;
+
+    font-size: 8px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 150ms ease,
+        border-color 150ms ease,
+        background 150ms ease,
+        color 150ms ease;
+}
+
+.molecule-viewer-controls button:hover {
+    transform: translateY(-1px);
+
+    border-color:
+        rgba(129, 140, 248, 0.34);
+
+    background:
+        rgba(30, 42, 67, 0.86);
+
+    color: #e3e9f4;
+}
+
+.molecule-viewer-controls button:active {
+    transform: translateY(0);
+}
+
+.molecule-viewer-controls button:focus-visible {
+    outline:
+        2px solid rgba(129, 140, 248, 0.65);
+
+    outline-offset: 2px;
+}
+
+.control-icon {
+    font-size: 12px;
+    line-height: 1;
+}
+
+
+/* PRIMARY */
+
+.molecule-viewer-controls
+.viewer-control-primary {
+    border-color:
+        rgba(129, 140, 248, 0.34);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(79, 70, 229, 0.24),
+            rgba(67, 56, 202, 0.12)
+        );
+
+    color: #e3e6ff;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.molecule-lab-footer {
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 5px 15px;
+
+    padding: 7px 14px 9px;
+
+    border-top:
+        1px solid rgba(148, 163, 184, 0.06);
+
+    background:
+        rgba(4, 9, 19, 0.22);
+
+    color: #61718c;
+
+    font-size: 8px;
+    line-height: 1.35;
+}
+
+.molecule-lab-footer span::before {
+    content: "·";
+
+    margin-right: 5px;
+
+    color: #8294b4;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .molecule-lab-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .molecule-lab-live {
+        align-self: flex-start;
+    }
+
+    .molecule-lab-stage {
+        min-height: 320px;
+    }
+
+    .molecule-viewer-controls {
+        flex-wrap: wrap;
+    }
+
+    .molecule-viewer-controls button {
+        flex: 1 1 calc(50% - 6px);
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .molecule-lab-header h2 {
+        font-size: 17px;
+    }
+
+    .molecule-lab-header p {
+        font-size: 9px;
+    }
+
+    .molecule-lab-controls-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #molecule-lab-select {
+        width: 100%;
+    }
+
+    .molecule-viewer-controls button {
+        flex: 1 1 100%;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .molecule-viewer-controls button {
+        transition: none;
+    }
+}

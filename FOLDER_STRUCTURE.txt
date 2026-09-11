@@ -1,0 +1,11 @@
+app/
+└── science/
+    ├── molecule_registry.py
+    └── molecules/
+        ├── __init__.py
+        └── bf3.py
+
+tests/
+└── test_molecule_registry.py
+
+MOLECULE_REGISTRY_README.md

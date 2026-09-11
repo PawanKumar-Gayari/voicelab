@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceLab — Research Replay</title>
+    <link rel="stylesheet" href="/static/css/replay.css">
+</head>
+
+<body>
+<main class="replay-page">
+
+    <header class="replay-header">
+        <div>
+            <div class="eyebrow">VOICELAB · RESEARCH REPLAY</div>
+            <h1 id="replay-title">Research Replay</h1>
+            <p id="replay-subtitle">Loading persisted research session…</p>
+        </div>
+
+        <div class="header-actions">
+            <a
+    href="/workspace?session_id={{ session_id | urlencode }}"
+    class="replay-button secondary"
+>← Workspace</a>
+            <button id="refresh-replay" class="replay-button">Refresh</button>
+        </div>
+    </header>
+
+    <section class="hero-grid">
+
+        <article class="hero-card">
+            <span class="label">MOLECULE</span>
+            <strong id="molecule-value">—</strong>
+        </article>
+
+        <article class="hero-card">
+            <span class="label">POINT GROUP</span>
+            <strong id="point-group-value">—</strong>
+        </article>
+
+        <article class="hero-card">
+            <span class="label">OPERATIONS</span>
+            <strong id="operation-count-value">—</strong>
+        </article>
+
+        <article class="hero-card">
+            <span class="label">VERIFICATION</span>
+            <strong id="verification-value">—</strong>
+        </article>
+
+    </section>
+
+    <section class="replay-grid">
+
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">SYMMETRY</span>
+                    <h2>Operations</h2>
+                </div>
+                <span id="operation-badge" class="badge">—</span>
+            </div>
+            <div id="operations-list" class="operation-list">
+                <div class="empty">No symmetry operations persisted.</div>
+            </div>
+        </article>
+
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">REPRESENTATION</span>
+                    <h2>Character Snapshot</h2>
+                </div>
+            </div>
+            <div id="characters" class="character-grid">
+                <div class="empty">No character data persisted.</div>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="replay-grid">
+
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">GROUP THEORY</span>
+                    <h2>Cartesian Representation</h2>
+                </div>
+            </div>
+
+            <div id="reduction-summary" class="reduction-summary">
+                Γ(x,y,z) = —
+            </div>
+
+            <div id="multiplicities" class="multiplicity-grid"></div>
+
+            <div id="basis-functions" class="basis-functions"></div>
+        </article>
+
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">SCIENTIFIC AUDIT</span>
+                    <h2>Verification</h2>
+                </div>
+                <span id="verification-badge" class="badge">WAITING</span>
+            </div>
+
+            <div id="verification-checks" class="verification-list">
+                <div class="empty">No verification audit persisted.</div>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="panel timeline-panel">
+        <div class="panel-heading">
+            <div>
+                <span class="eyebrow">SESSION HISTORY</span>
+                <h2>Research Timeline</h2>
+            </div>
+            <span id="event-count" class="badge">0 events</span>
+        </div>
+
+        <div id="timeline" class="timeline">
+            <div class="empty">Loading replay timeline…</div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+window.VOICELAB_REPLAY_SESSION_ID =
+    {{ session_id | tojson }};
+</script>
+<script src="/static/js/replay.js"></script>
+</body>
+</html>
